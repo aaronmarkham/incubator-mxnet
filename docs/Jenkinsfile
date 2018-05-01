@@ -64,7 +64,9 @@ try {
           init_git()
           timeout(time: max_time, unit: 'MINUTES') {
               copyArtifacts filter: 'docs/build_version_doc/artifacts.tgz', fingerprintArtifacts: true, projectName: 'website build pipeline', target: 'docs/build_version_doc'
-              sh "ci/build.py -p ubuntu_cpu /work/runtime_functions.sh deploy_docs"
+              withCredentials([usernameColonPassword(credentialsId: '32847865-9707-4908-8d9e-ea4c415f8618', variable: 'PUBLISH_CREDENTIALS')]) {
+                  sh "ci/build.py -p ubuntu_cpu /work/runtime_functions.sh deploy_docs ${PUBLISH_CREDENTIALS}"
+              }
           }
         }
       }

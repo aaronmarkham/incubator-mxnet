@@ -28,6 +28,14 @@
 set -e
 set -x
 
+if [ -z "$1" ]
+  then
+    echo "Credentials required. Format is USERNAME:PASSWORD"
+    exit 1
+  else
+    credentials=$1
+fi
+
 # Make a home for the artifacts
 if [ -d "artifacts" ]; then
   rm -rf artifacts
@@ -37,7 +45,7 @@ tar xvf docs/build_version_doc/artifacts.tgz -C artifacts
 
 # Clone, clear, and refresh the repo
 rm -rf incubator-mxnet-site
-git clone https://$APACHE_USERNAME:$APACHE_PASSWORD@github.com/apache/incubator-mxnet-site.git
+git clone https://$credentials@github.com/apache/incubator-mxnet-site.git
 cd incubator-mxnet-site
 git checkout asf-site
 rm -rf *
