@@ -378,7 +378,7 @@ unittest_ubuntu_python3_cpu() {
 
 unittest_ubuntu_python3_cpu_mkldnn() {
     set -ex
-    export PYTHONPATH=./python/ 
+    export PYTHONPATH=./python/
     # MXNET_MKLDNN_DEBUG is buggy and produces false positives
     # https://github.com/apache/incubator-mxnet/issues/10026
     #export MXNET_MKLDNN_DEBUG=1  # Ignored if not present
@@ -594,7 +594,8 @@ deploy_docs() {
     set -ex
     pushd .
 
-    make docs
+    cd /work/mxnet/docs/build_version_doc
+    ./deploy_docs.sh
 
     popd
 }
