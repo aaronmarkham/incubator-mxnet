@@ -595,7 +595,7 @@ deploy_docs() {
     pushd .
 
     cd /work/mxnet/docs/build_version_doc
-    ./deploy_docs.sh
+    ./deploy_docs.sh $1
 
     popd
 }
