@@ -37,7 +37,7 @@ tar xvf docs/build_version_doc/artifacts.tgz -C artifacts
 
 # Clone, clear, and refresh the repo
 rm -rf incubator-mxnet-site
-git clone https://$PUBLISH_CREDENTIALS@github.com/apache/incubator-mxnet-site.git
+git clone https://$1@github.com/apache/incubator-mxnet-site.git
 cd incubator-mxnet-site
 git checkout asf-site
 rm -rf *
