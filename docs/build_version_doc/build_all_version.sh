@@ -62,12 +62,16 @@ if [ -z "$3" ]
   then
     echo "Using the main project URL."
     mxnet_url="https://github.com/apache/incubator-mxnet.git"
+    mxnet_folder="apache-mxnet"
   else
     mxnet_url=$3
+    fork=${mxnet_url##"https://github.com/"}
+    fork_user=${fork%%"/incubator-mxnet.git"}
+    mxnet_folder=$fork_user"-mxnet"
     echo "Building with a user supplied fork: $mxnet_url"
 fi
 
-mxnet_folder="apache_mxnet"
+#mxnet_folder="apache_mxnet"
 built="VersionedWeb"
 
 if [ ! -d "$mxnet_folder" ]; then
