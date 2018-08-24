@@ -687,7 +687,7 @@ li.dropdown-submenu ul.dropdown-menu a {
     margin-bottom:2em;
 }
 
-.section-tout-promo .row a {
+.row a.section-tout-promo {
     border: none;
 }
 
