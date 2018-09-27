@@ -1,4 +1,4 @@
-function setVersion(){
+function setSearchVersion(){
     let doc = window.location.pathname.match(/\/(search\.html.*)$/);
     if (doc) {
             let params = document.location.search || '';
@@ -38,5 +38,5 @@ function setSearch(){
 
 $(document).ready(function () {
     setSearch();
-    setVersion();
+    setSearchVersion();
 });
