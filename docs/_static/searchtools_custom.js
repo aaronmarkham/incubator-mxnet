@@ -570,7 +570,7 @@ var Search = {
         }
         Search.title.text(_('Search Results'));
         if (!resultCount)
-          Search.status.text(_('Your search did not match any documents. Please make sure that all words are spelled correctly and that you\'ve selected enough categories.'));
+          Search.status.text(_('Your search did not match any documents for this version. You can use the versions selector in the navigation to search a different version of MXNet. Please also make sure that all words are spelled correctly and that you\'ve selected enough categories.'));
         else
             Search.status.text(_('Search finished, found %s page(s) matching the search query.').replace('%s', resultCount));
         Search.status.fadeIn(500);
