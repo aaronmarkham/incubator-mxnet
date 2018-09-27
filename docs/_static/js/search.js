@@ -1,8 +1,7 @@
 function setVersion(){
-        let doc = window.location.pathname.match(/^\/(search\/.*)$/) || window.location.pathname.match(/^\/versions\/[^*]+\/(search\/.*)$/);
-        if (doc) {
-            let params = (new URL(document.location)).searchParams || '';
-            console.log('params: ', params);
+    let doc = window.location.pathname.match(/\/(search\.html.*)$/);
+    if (doc) {
+            let params = document.location.search || '';
             if (document.getElementById('dropdown-menu-position-anchor-version')) {
                     versionNav = $('#dropdown-menu-position-anchor-version a.main-nav-link');
                     $(versionNav).each( function( index, el ) {
