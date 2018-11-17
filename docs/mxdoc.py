@@ -115,7 +115,7 @@ def build_scala_docs(app):
     _run_cmd('mkdir -p ' + dest_path)
     scaladocs = ['index', 'index.html', 'org', 'lib', 'index.js', 'package.html']
     for doc_file in scaladocs:
-        _run_cmd('cd ' + scala_path + ' && mv -f ' + doc_file + ' ' + dest_path)
+        _run_cmd('cd ' + scala_path + ' && mv -f ' + doc_file + ' ' + dest_path + '; exit 0')
 
 def build_clojure_docs(app):
     """build clojure doc and then move the outdir"""
