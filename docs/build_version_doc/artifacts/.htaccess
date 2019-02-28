@@ -21,4 +21,8 @@ RewriteRule ^versions/1.0.0/api/clojure/.*$ %{ENV:default_version}/error/api.htm
 RewriteRule ^versions/1.1.0/api/clojure/.*$ %{ENV:default_version}/error/api.html [R=301,L]
 RewriteRule ^versions/1.2.1/api/clojure/.*$ %{ENV:default_version}/error/api.html [R=301,L]
 
+# Redirect requests for APIs that have moved
+RewriteRule ^versions/0.11.0/api/python/autograd/autograd.html ^versions/0.11.0/api/python/autograd.html [R=301,L]
+RewriteRule ^.+/api/python/autograd.html ^.+/api/python/autograd/autograd.html [R=301,L]
+
 ErrorDocument 404 /error/404.html
