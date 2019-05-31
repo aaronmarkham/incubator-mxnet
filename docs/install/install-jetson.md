@@ -93,6 +93,7 @@ sudo ln -s /usr/local/cuda-10.0 /usr/local/cuda
 ```
 
 **Note:** When cross-compiling, change the CUDA version on the host computer you're using to match the version you're running on your Jetson device.
+**Note:** CUDA 10.1 is recommended but doesn't ship with the Nano's SD card image. You may want to go through CUDA upgrade steps first.
 
 ### Download the source & setup some environment variables:
 
@@ -219,7 +220,14 @@ Edit the Makefile to install the MXNet with CUDA bindings to leverage the GPU on
 cp $MXNET_HOME/make/crosscompile.jetson.mk config.mk
 ```
 
-Edit the Mshadow Makefile to ensure MXNet builds with Pascal's hardware level low precision acceleration by editing `3rdparty/mshadow/make/mshadow.mk`.
+Now edit `config.mk` to make some additional changes for the Nano. Update the following settings:
+
+1. Update the CUDA path. `USE_CUDA_PATH = /usr/local/cuda`
+2. Add `-gencode arch=compute-63, code=sm_62` to the `CUDA_ARCH` setting.
+3. Update the NVCC settings. `NVCCFLAGS := -m64`
+4. (optional, but recommended) Turn on OpenCV. `USE_OPENCV = 1`
+
+Now edit the Mshadow Makefile to ensure MXNet builds with Pascal's hardware level low precision acceleration by editing `3rdparty/mshadow/make/mshadow.mk`.
 The last line has `MSHADOW_USE_PASCAL` set to `0`. Change this to `1` to enable it.
 
 ```bash
