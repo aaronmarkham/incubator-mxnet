@@ -50,6 +50,7 @@ core_logic: {
 
   utils.parallel_stage('Prepare', [
     custom_steps.docs_prepare(),
+    // only the website publish flow will archive, PRs do not
     custom_steps.docs_archive()
   ])
 
