@@ -6,6 +6,8 @@
 .*json
 .*txt
 3rdparty/*
+docs/python_docs/themes/*
+docs/static_site/*
 R-package/*
 trunk/*
 .*\\.m
