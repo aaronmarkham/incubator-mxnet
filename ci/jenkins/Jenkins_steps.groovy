@@ -1418,7 +1418,9 @@ def docs_python() {
           timeout(time: max_time, unit: 'MINUTES') {
             utils.unpack_and_init('libmxnet', mx_lib, false)
             utils.docker_run('ubuntu_cpu_python', 'build_python_docs', false)
-            utils.pack_lib('python-artifacts', 'docs/_build/python-artifacts.tgz', false)
+            if (env.BRANCH_NAME == "master" || env.BRANCH_NAME.startsWith("new_")) {
+              utils.pack_lib('python-artifacts', 'docs/_build/python-artifacts.tgz', false)
+            }
           }
         }
       }
@@ -1434,7 +1436,9 @@ def docs_c() {
           timeout(time: max_time, unit: 'MINUTES') {
             utils.unpack_and_init('libmxnet', 'lib/libmxnet.so', false)
             utils.docker_run('ubuntu_cpu_c', 'build_c_docs', false)
-            utils.pack_lib('c-artifacts', 'docs/_build/c-artifacts.tgz', false)
+            if (env.BRANCH_NAME == "master" || env.BRANCH_NAME.startsWith("new_")) {
+              utils.pack_lib('c-artifacts', 'docs/_build/c-artifacts.tgz', false)
+            }
           }
         }
       }
