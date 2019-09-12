@@ -1449,13 +1449,8 @@ def docs_julia() {
         ws('workspace/docs') {
           timeout(time: max_time, unit: 'MINUTES') {
             utils.unpack_and_init('libmxnet', mx_lib, false)
-            try {
-               utils.docker_run('ubuntu_cpu_julia', 'build_julia_docs', false)
-               utils.pack_lib('julia-artifacts', 'docs/_build/julia-artifacts.tgz', false)
-            }
-            catch (Exception e) {
-               println(e.getMessage())
-            }
+            utils.docker_run('ubuntu_cpu_julia', 'build_julia_docs', false)
+            utils.pack_lib('julia-artifacts', 'docs/_build/julia-artifacts.tgz', false)
           }
         }
       }
@@ -1572,29 +1567,6 @@ def docs_prepare() {
 
             // archive so the publish pipeline can access the artifact
             archiveArtifacts 'docs/_build/full_website.tgz'
-          }
-        }
-      }
-    }]
-}
-
-
-// This is for the website and the Python API only
-def docs_prepare_python_only() {
-    return ['Prepare for publication of the full website': {
-      node(NODE_LINUX_CPU) {
-        ws('workspace/docs') {
-          timeout(time: max_time, unit: 'MINUTES') {
-            utils.init_git()
-
-            unstash 'jekyll-artifacts'
-            unstash 'python-artifacts'
-
-            // Prepare website and Python API docs
-            utils.docker_run('ubuntu_cpu_jekyll', 'build_docs_small', false)
-
-            // Publish preview to S3
-            sh "cd docs/_build/html && ci/other/ci_deploy_doc.sh ${env.BRANCH_NAME} ${env.BUILD_NUMBER}"
           }
         }
       }
