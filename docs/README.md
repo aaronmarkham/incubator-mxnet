@@ -30,6 +30,8 @@ Each language documentation is built in a modular way, so that if you are a cont
 
 You can also use the project's CI tools to emulate any changes with Docker. You can use these tools to install dependencies and run the parts of the build you want to test.
 
+Refer to the [MXNet Developer Wiki](https://cwiki.apache.org/confluence/display/MXNET/Building+the+New+Website) for instructions on building the docs locally.
+
 If you plan to contribute changes to the documentation or website, please submit a pull request. Contributions are welcome!
 
 ## Python Docs
@@ -50,7 +52,6 @@ The docs are hosted on the website in each language API's section. You can find 
 * [Conda](https://www.anaconda.com/distribution/#download-section) (install to PATH)
 
 If you only need to make changes to tutorials or other pages that are not generated from one of the API source code folders, then you can use a basic Python pip or conda installation. But if you want edit the API source and have the reference API docs update, you also need to build MXNet from source. Refer to the build from source instructions for this requirement.
-
 
 ### Ubuntu Setup
 
